@@ -112,8 +112,8 @@ Select Save.
 2. Create a file named `vars/helloWorldSimple.groovy`
 3. Content of vars/helloWorldSimple.groovy
 ```groovy
-def call(String name, String dayOfWeek) {
-    sh "echo Hello World ${name}. It is ${dayOfWeek}."
+def call() {
+    sh "echo Hello World"
 }
 ```
 
@@ -137,7 +137,7 @@ pipeline {
     stages {
         stage('verify') {
             steps {
-                helloWorld(name: 'fred')
+                helloWorldSimple()
             }
         }
     }
