@@ -69,3 +69,77 @@ Shared libraries can be configured either as global libraries or folder-level li
 - Libraries configured at multibranch/folder level are considered not trusted and run inside the Groovy sandbox. Using libraries at multibranch/folder level incurs less risk to the Jenkins server than using libraries outside the sandbox.
 
 You can also configure automatic shared libraries.
+
+
+# Task: Configure a global pipeline library
+In this exercise you will:
+
+- Configure a global pipeline library.
+
+- Create and run a simple Jenkinsfile to verify that the library is set up correctly.
+
+## Task: Configure a global pipeline library
+1. From the Jenkins Dashboard, select Manage Jenkins in the left navigation bar.
+
+2. Under System Configuration, select Configure System.
+
+3. Scroll down to Global Pipeline Libraries.
+
+4. Select Add and set the following values:
+
+    - Name: shared-library
+
+    - Default version: master
+
+    - Load implicitly: unchecked
+
+    - Allow default version to be overridden: checked
+
+    - Include @Library changes in job recent changes: checked
+
+5. Under Retrieval method, select Modern SCM.
+
+6. Select Git and set the following values:
+
+    - Project Repository: 
+
+    - Credentials: 
+
+Select Save.
+
+## Task: Verify that the library is set up correctly
+To verify that the library is set up correctly, create and run a simple Jenkinsfile:
+
+1. From the Jenkins Dashboard, select New Item.
+
+2. Enter the item name test-shared-library.
+
+3. Select Pipeline.
+
+4. Select OK.
+
+5. Scroll down to the Pipeline text section and paste the following into the Script text box:
+```
+@Library('shared-library') _
+pipeline {
+    agent { label 'java' }
+    stages {
+        stage('verify') {
+            steps {
+                helloWorld(name: 'fred')
+            }
+        }
+    }
+}
+```
+
+6. Select Save.
+
+7. Select Build Now in the left navigation bar.
+
+8. Under Build History, select the blue ball to the left of #1 to open the Console Output.
+
+9. Scroll down and verify that you see
+```
+Hello world, fred
+```
