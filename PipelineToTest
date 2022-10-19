@@ -28,7 +28,9 @@ pipeline {
             }
         }
         stage("Use libfile") {
-            runLinuxScript(name: "build.sh")
+            steps {
+                runLinuxScript(name: "build.sh")
+            }
         }
     }
 }
