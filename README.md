@@ -87,7 +87,7 @@ In this exercise you will:
 
 4. Select Add and set the following values:
 
-    - Name: shared-library
+    - Name: GenericLibs
 
     - Default version: master
 
@@ -101,9 +101,8 @@ In this exercise you will:
 
 6. Select Git and set the following values:
 
-    - Project Repository: 
+    - Project Repository: https://github.com/MichaelGit-beep/JenkinsSharedLibs.git
 
-    - Credentials: 
 
 Select Save.
 
@@ -122,7 +121,7 @@ To verify that the library is set up correctly, create and run a simple Jenkinsf
 
 1. From the Jenkins Dashboard, select New Item.
 
-2. Enter the item name test-shared-library.
+2. Enter the item name GenericLibs-test.
 
 3. Select Pipeline.
 
@@ -130,7 +129,7 @@ To verify that the library is set up correctly, create and run a simple Jenkinsf
 
 5. Scroll down to the Pipeline text section and paste the following into the Script text box:
 ```groovy
-@Library('shared-library') _
+@Library('GenericLibs') _
 
 pipeline {
     agent any
@@ -160,7 +159,7 @@ Hello world, fred
 ## HelloWorldSimple example
 Jenkinsfile
 ```groovy
-@Library('shared-starter') _
+@Library('GenericLibs') _
 pipeline {
   agent any
   stages {
@@ -183,7 +182,7 @@ def call(String name, String dayOfWeek) {
 
 Jenkinsfile
 ```groovy
-@Library('shared-starter') _
+@Library('GenericLibs') _
 pipeline {
   agent any
   stages {
