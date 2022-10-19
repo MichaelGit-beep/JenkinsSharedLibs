@@ -107,6 +107,16 @@ In this exercise you will:
 
 Select Save.
 
+## Create shared library function
+1. In shared library SCM create a folder `vars`
+2. Create a file named `vars/helloWorldSimple.groovy`
+3. Content of vars/helloWorldSimple.groovy
+```groovy
+def call(String name, String dayOfWeek) {
+    sh "echo Hello World ${name}. It is ${dayOfWeek}."
+}
+```
+
 ## Task: Verify that the library is set up correctly
 To verify that the library is set up correctly, create and run a simple Jenkinsfile:
 
@@ -119,10 +129,11 @@ To verify that the library is set up correctly, create and run a simple Jenkinsf
 4. Select OK.
 
 5. Scroll down to the Pipeline text section and paste the following into the Script text box:
-```
+```groovy
 @Library('shared-library') _
+
 pipeline {
-    agent { label 'java' }
+    agent any
     stages {
         stage('verify') {
             steps {
