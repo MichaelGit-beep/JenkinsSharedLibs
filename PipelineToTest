@@ -27,5 +27,8 @@ pipeline {
                 assemble()
             }
         }
+        stage("Use libfile") {
+            runLinuxScript(name: "build.sh")
+        }
     }
 }
