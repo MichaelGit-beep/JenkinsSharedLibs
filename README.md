@@ -4,6 +4,7 @@ Each shared library lives in its own repository. The repository has a specific s
 # SCM directory structure
 The directory structure of a Shared Library repository is as follows:
 
+```
 (root)
 +- src                     # Groovy source files
 |   +- org
@@ -16,6 +17,8 @@ The directory structure of a Shared Library repository is as follows:
 |   +- org
 |       +- foo
 |           +- bar.json    # static helper data for org.foo.Bar
+```
+
 The `src`, `resources` and `vars` directories are not required; each has its own behavior and may be included or omitted as needed. Let us look at each directory.
 
 ## src directory
