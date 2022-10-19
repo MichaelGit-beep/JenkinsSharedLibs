@@ -154,3 +154,51 @@ pipeline {
 ```
 Hello world, fred
 ```
+
+# Call the shared library custom step
+
+## HelloWorldSimple example
+Jenkinsfile
+```groovy
+@Library('shared-starter') _
+pipeline {
+  agent any
+  stages {
+    stage('hello') {
+      steps {
+        helloWorldSimple("Fred","Friday")
+      }
+    }
+  }
+}
+```
+vars/helloWorldSimple.groovy
+```groovy
+def call(String name, String dayOfWeek) {
+  sh "echo Hello World ${name}. It is ${dayOfWeek}."
+}
+```
+
+## HelloWorld example
+
+Jenkinsfile
+```groovy
+@Library('shared-starter') _
+pipeline {
+  agent any
+  stages {
+    stage('hello') {
+      steps {
+        helloWorld(name: "Fred", dayOfWeek: "Friday")
+      }
+    }
+  }
+}
+```
+
+vars/helloWorld.groovy
+```groovy
+def call(Map config = [:]) {
+  sh "echo Hello World ${config.name}. It is ${config.dayOfWeek}."
+}
+```
