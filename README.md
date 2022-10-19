@@ -40,3 +40,32 @@ The libraryResource step reads files from the resources directory and returns th
 
 ## Other directories
 Other directories under the root of the shared library are reserved for future enhancements.
+
+
+
+# Add Shared Lib
+To configure a shared library, navigate to Manage Jenkins  Configure System on the Manage Jenkins page and go to the Global Pipeline Libraries section. When you click Add,. the configuration page for a Global Pipeline Library is displayed:
+
+global lib config
+In this unit, we only discuss using global shared libraries.
+
+## Shared library configuration notes
+- Set Default version to master to have Pipelines call custom steps from the master branch.
+
+- If Allow default version to be overridden is enabled, a Pipeline can override this to call custom steps from other branches using the @Library annotation.
+
+- When Load implicitly is enabled, the default branch is automatically available to all Pipelines; custom steps can also be loaded manually using the @Library annotation.
+
+- When you select Modern SCM for the Retrieval method, the Source Code Management page pops up. Use this page to configure the repository that holds your shared library to Jenkins:
+
+
+Populate these fields as you would when configuring any repository to Jenkins.
+
+## Global libraries versus folder-level libraries
+Shared libraries can be configured either as global libraries or folder-level libraries. Consider the following:
+
+- Global libraries configured in Jenkins are considered trusted; steps from this library run outside the Groovy sandbox.
+
+- Libraries configured at multibranch/folder level are considered not trusted and run inside the Groovy sandbox. Using libraries at multibranch/folder level incurs less risk to the Jenkins server than using libraries outside the sandbox.
+
+You can also configure automatic shared libraries.
