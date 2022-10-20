@@ -1,0 +1,36 @@
+@Library('GenericLibs') _
+
+pipeline {
+    agent any
+    stages {
+        stage('helloWorldSimple') {
+            steps {
+                sh "echo helloWorldSimple"
+                helloWorldSimple()
+            }
+        }
+        stage('helloWorldCostum') {
+            steps {
+                sh "echo 'Running helloWorldCostum'"
+                helloWorldCostum("Michael", "Monday")
+            }
+        }
+        stage('helloWorldCostumMap') {
+            steps {
+                sh "echo 'Running helloWorldCostumMap'"
+                helloWorldCostumMap(name: "Michael", day: "Friday")
+            }
+        }
+        stage('all') {
+            steps {
+                sh "echo 'Running all'"
+                assemble()
+            }
+        }
+        stage("Use libfile") {
+            steps {
+                runLinuxScript(name: "build.sh")
+            }
+        }
+    }
+}
