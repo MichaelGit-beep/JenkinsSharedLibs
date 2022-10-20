@@ -201,3 +201,41 @@ def call(Map config = [:]) {
   sh "echo Hello World ${config.name}. It is ${config.dayOfWeek}."
 }
 ```
+
+# Use LibraryResource
+## Loading resources
+External libraries may load adjunct files from a resources/ directory using the libraryResource step. The argument is a relative pathname, akin to Java resource loading:
+```groovy
+def request = libraryResource 'com/mycorp/pipeline/somelib/request.json'
+```
+
+The file is loaded as a string, suitable for passing to certain APIs or saving to a workspace using `writeFile`.
+
+It is advisable to use an unique package structure so you do not accidentally conflict with another library.
+
+Jenkinsfile
+```groovy
+def scriptName = "build.sh"
+loadScript(scriptName)
+sh """
+    ls
+    ./${scriptName}
+"""
+```
+
+vars/loadScript.groovy
+```groovy
+def call(String script) {
+    def scriptText = libraryResource  "scripts/${script}"
+    writeFile file: "./${script}", text: scriptText
+    sh "chmod +x ${script}"
+}
+```
+resources/scripts/build.sh
+```bash
+#!/bin/bash -Ex
+echo "Starting build"
+sleep 2
+echo "Run unit tests"
+echo "Build is done"
+```
