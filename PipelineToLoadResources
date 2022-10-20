@@ -1,0 +1,19 @@
+@Library('GenericLibs') _
+
+pipeline {
+    agent any
+    stages {
+        stage('helloWorldSimple') {
+            steps {
+                script {
+                    def scriptName = "build.sh"
+                    loadScript(scriptName)
+                    sh """
+                        ls
+                        ./${scriptName}
+                    """
+                }
+            }
+        }
+    }
+}
