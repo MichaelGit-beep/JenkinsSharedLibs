@@ -7,3 +7,5 @@ class Foo {
         println("Hello")
     }
 }
+
+return this
