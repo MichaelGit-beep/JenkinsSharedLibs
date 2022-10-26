@@ -1,2 +1,2 @@
-def A = "A VAL"
-def B = "B VAL"
+def A() { return "A VAL" } 
+def B() { return "B VAL" } 
