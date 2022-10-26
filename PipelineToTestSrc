@@ -4,6 +4,7 @@ import Foo
 node() {
     stage("Src") {
         a = new Foo()
+        println(a.className())
         a.say_hello()
         b = new Zot()
         b.checkout_scm()
