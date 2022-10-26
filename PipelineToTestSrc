@@ -5,5 +5,7 @@ node() {
     stage("Src") {
         a = new Foo()
         a.say_hello()
+        b = new Zot()
+        b.checkout_scm()
     }
 }
