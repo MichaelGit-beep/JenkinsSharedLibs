@@ -1,8 +1,8 @@
 @Library('GenericLibs@master')
-import foo.A
+import foo
 
 node() {
     stage("Src") {
-        A.say_hello()
+        foo.A.say_hello()
     }
 }
