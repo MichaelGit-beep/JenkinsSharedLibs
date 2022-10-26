@@ -10,6 +10,6 @@ node() {
         b = new Zot()
         b.checkout_scm()
 
-        c = new Foo.go.Point(1.0, 1.0, 2.0)
+        c = new Foo.go.Point(x: 1.0, y: 1.0, z: 2.0)
     }
 }
