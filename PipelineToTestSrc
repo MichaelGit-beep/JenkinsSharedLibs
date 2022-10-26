@@ -1,6 +1,6 @@
 @Library('GenericLibs@master')
 import Foo
-import Foo.go.Point
+import go.Point
 
 node() {
     stage("Src") {
@@ -10,6 +10,6 @@ node() {
         b = new Zot()
         b.checkout_scm()
 
-        c = new Foo.go.Point(x: 1.0, y: 1.0, z: 2.0)
+        c = new go.Point(x: 1.0, y: 1.0, z: 2.0)
     }
 }
