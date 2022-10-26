@@ -1,0 +1,8 @@
+@Library('GenericLibs@master')
+import foo.A
+
+node() {
+    stage("Src") {
+        A.say_hello()
+    }
+}
