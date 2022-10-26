@@ -1,4 +1,4 @@
-class A {
+class Foo {
     static void main(args) {
         println("main")
     }
